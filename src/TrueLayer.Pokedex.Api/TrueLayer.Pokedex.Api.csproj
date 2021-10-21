@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>f7daa495-12ee-4e20-9ffb-6e94cf41823f</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.11.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="5.0.0" />
+		<PackageReference Include="NewRelic.LogEnrichers.Serilog" Version="1.0.1" />
+		<PackageReference Include="Otb.AspNetCore.Utilities" Version="3.0.9" />
+		<PackageReference Include="Otb.Utilities" Version="1.0.127" />
+		<PackageReference Include="Polly" Version="7.2.2" />
+    <PackageReference Include="Microsoft.Extensions.Http.Polly" Version="5.0.1" />
+		<PackageReference Include="Serilog" Version="2.10.0" />
+		<PackageReference Include="Serilog.AspNetCore" Version="4.1.0" />
+		<PackageReference Include="Serilog.Enrichers.Environment" Version="2.2.0" />
+		<PackageReference Include="Serilog.Enrichers.Process" Version="2.0.2" />
+		<PackageReference Include="Serilog.Enrichers.Thread" Version="3.1.0" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.1" />
+		<PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TrueLayer.Pokedex.Application\TrueLayer.Pokedex.Application.csproj" />
+    <ProjectReference Include="..\TrueLayer.Pokedex.Domain\TrueLayer.Pokedex.Domain.csproj" />
+    <ProjectReference Include="..\TrueLayer.Pokedex.Infrastructure\TrueLayer.Pokedex.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

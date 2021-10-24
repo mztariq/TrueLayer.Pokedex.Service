@@ -1,26 +1,26 @@
 ﻿using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
+using TrueLayer.Pokedex.Domain.Models;
 
 namespace TrueLayer.Pokedex.Infrastructure.HttpClients
 {
-    public class SampleHttpClient : ISampleHttpClient
+    public class PokemonHttpClient : IPokemonHttpClient
     {
         private readonly HttpClient _httpClient;
-        private readonly ILogger<SampleHttpClient> _logger;
+        private readonly ILogger<PokemonHttpClient> _logger;
 
-        public SampleHttpClient(ILogger<SampleHttpClient> logger, HttpClient httpClient)
+        public PokemonHttpClient(ILogger<PokemonHttpClient> logger, HttpClient httpClient)
         {
             _logger = logger;
             _httpClient = httpClient;
         }
 
-        public async Task<T?> GetEntityData<T>(string somevariableOrCanBeModelInsteadOfString)
+        public async Task<T?> GetEntityData<T>(string name)
         {
-            var request = new HttpRequestMessage(HttpMethod.Get, $"?sample={somevariableOrCanBeModelInsteadOfString}");
+            var request = new HttpRequestMessage(HttpMethod.Get, $"/api/v2/pokemon-species/{name}");
 
             var response = await SendRequestAsync(request);
             _logger.LogInformation($"Received success code from {_httpClient.BaseAddress}");
@@ -37,12 +37,12 @@ namespace TrueLayer.Pokedex.Infrastructure.HttpClients
         private static async Task<T?> DeserializeResponseAsync<T>(HttpResponseMessage response)
         {
             var json = await response.Content.ReadAsStringAsync();
-            var result = JsonSerializer.Deserialize<IEnumerable<T>>(json,
+
+            var result = JsonSerializer.Deserialize<T>(json,
                 new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
 
-            return result is not null 
-                ? result.FirstOrDefault() 
-                : default;
+            return result is not null
+                ? result : default;
         }
     }
 }

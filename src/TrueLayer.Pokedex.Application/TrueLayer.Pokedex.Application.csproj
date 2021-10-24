@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TrueLayer.Pokedex.Domain\TrueLayer.Pokedex.Domain.csproj" />
+    <ProjectReference Include="..\TrueLayer.Pokedex.Infrastructure\TrueLayer.Pokedex.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

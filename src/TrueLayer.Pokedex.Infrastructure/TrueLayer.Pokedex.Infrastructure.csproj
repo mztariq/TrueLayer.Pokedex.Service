@@ -12,4 +12,8 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="5.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TrueLayer.Pokedex.Domain\TrueLayer.Pokedex.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -2,7 +2,7 @@ using Xunit;
 
 namespace TrueLayer.Pokedex.Application.Unit.Test
 {
-    public class UnitTest1
+    public class PokemonServiceTests
     {
         [Fact]
         public void Test1()

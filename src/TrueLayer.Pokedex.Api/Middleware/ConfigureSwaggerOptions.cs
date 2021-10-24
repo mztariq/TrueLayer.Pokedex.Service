@@ -33,9 +33,9 @@ namespace TrueLayer.Pokedex.Api.Middleware
         {
             var info = new OpenApiInfo()
             {
-                Title = "$safeprojectname$ API",
+                Title = "TrueLayer Pokedex Service",
                 Version = description.ApiVersion.ToString(),
-                Description = "This is sample api project, which has all the necessary configurations for any rest api. ************* PLEASE CHANGE THIS DESCRIPTION *************"
+                Description = "This is fun Pokedex Rest Api which will return the supplied pokemons detail and also have translations available."
             };
             if (description.IsDeprecated)
             {

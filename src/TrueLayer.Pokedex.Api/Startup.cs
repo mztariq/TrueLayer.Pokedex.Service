@@ -40,7 +40,8 @@ namespace TrueLayer.Pokedex.Api
             AddDependencies(services);
             AddSwagger(services);
             AddApiVersioning(services);
-            AddSampleHttpClient(services); // We have sample service inject, which can be replaced with your choice of service required for the project or can be completely removed (if not required)
+            AddPokemonHttpClient(services);
+            AddTranslatorHttpClient(services);
         }
 
 
@@ -48,7 +49,7 @@ namespace TrueLayer.Pokedex.Api
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IApiVersionDescriptionProvider provider)
         {
             const string healthCheckUrl = "/healthcheck";
-            const string swaggerApiName = "$safeprojectname$ API";
+            const string swaggerApiName = "TrueLayer Pokedex Service";
 
             if (env.IsDevelopment())
             {
@@ -94,7 +95,8 @@ namespace TrueLayer.Pokedex.Api
 
         private void AddDependencies(IServiceCollection services)
         {
-            services.AddSingleton<ISampleService, SampleService>();
+            services.AddScoped<IPokemonService, PokemonService>();
+            services.AddScoped<ITranslationService, TranslationService>();
         }
 
         private static void AddSwagger(IServiceCollection services)
@@ -122,29 +124,22 @@ namespace TrueLayer.Pokedex.Api
                 });
         }
 
-        private void AddSampleHttpClient(IServiceCollection services) // This can be updated to use your required Httpclient
+        private void AddPokemonHttpClient(IServiceCollection services)
         {
-            var options = Configuration.GetSection("SampleSettings").Get<SampleSettings>();
-            services.AddHttpClient<ISampleHttpClient, SampleHttpClient>(c =>
+            var options = Configuration.GetSection("PokemonSettings").Get<PokemonSettings>();
+            services.AddHttpClient<IPokemonHttpClient, PokemonHttpClient>(c =>
                 {
-                    c.BaseAddress = new Uri(new Uri(options.ApiBaseUri), options.ApiRelativeUri);
-                })
-                .AddPolicyHandler(GetRetryPolicy(options))
-                .AddPolicyHandler(GetCircuitBreakerPolicy(options));
+                    c.BaseAddress = new Uri(options.ApiBaseUri);
+                });
         }
 
-        private static IAsyncPolicy<HttpResponseMessage> GetRetryPolicy(SampleSettings options) =>
-            HttpPolicyExtensions
-                .HandleTransientHttpError()
-                .OrResult(response => (int)response.StatusCode == 429)
-                .WaitAndRetryAsync(options.DefaultMaxRetryAttempts,
-                    retryAttempt => TimeSpan.FromSeconds(options.DefaultWaitTimeInSecondsBetweenAttempts));
-
-        private static IAsyncPolicy<HttpResponseMessage> GetCircuitBreakerPolicy(SampleSettings options) =>
-            HttpPolicyExtensions
-                .HandleTransientHttpError()
-                .OrResult(response => (int)response.StatusCode == 429)
-                .CircuitBreakerAsync(options.DefaultMaxRetryAttempts,
-                    TimeSpan.FromSeconds(options.DefaultCircuitBreakerTimeInSeconds));
+        private void AddTranslatorHttpClient(IServiceCollection services)
+        {
+            var options = Configuration.GetSection("TranslationSettings").Get<TranslationSettings>();
+            services.AddHttpClient<ITranslationHttpClient, TranslationHttpClient>(c =>
+                {
+                    c.BaseAddress = new Uri(options.ApiBaseUri);
+                });
+        }
     }
 }

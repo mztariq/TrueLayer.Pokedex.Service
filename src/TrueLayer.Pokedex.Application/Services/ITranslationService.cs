@@ -3,8 +3,8 @@ using TrueLayer.Pokedex.Domain.Models;
 
 namespace TrueLayer.Pokedex.Application.Services
 {
-    public interface ISampleService
+    public interface ITranslationService
     {
-        Task Process(SomeModelData modelRequest);
+        Task<string> Translate(PokemonDetail pokemon);
     }
 }

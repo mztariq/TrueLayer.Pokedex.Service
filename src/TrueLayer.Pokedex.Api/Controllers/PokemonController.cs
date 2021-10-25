@@ -1,12 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using TrueLayer.Pokedex.Api.Middleware;
-using TrueLayer.Pokedex.Application.Services;
-using TrueLayer.Pokedex.Domain.Models;
 using System;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+using TrueLayer.Pokedex.Application.Services;
+using TrueLayer.Pokedex.Domain.Models;
 
 namespace TrueLayer.Pokedex.Api.Controllers
 {

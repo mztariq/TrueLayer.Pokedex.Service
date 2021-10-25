@@ -44,7 +44,7 @@ namespace TrueLayer.Pokedex.Application.Unit.Test
         {
             return new Translations
             {
-                Contents = new TranslationsContents { Translated = "This is translation" },
+                Contents = new TranslationsContents { Translated = "It can freely recombine its own cellular structure to\ntransform into other life-forms." },
                 Success = new TranslationsSuccess { Total = 1 }
             };
         }

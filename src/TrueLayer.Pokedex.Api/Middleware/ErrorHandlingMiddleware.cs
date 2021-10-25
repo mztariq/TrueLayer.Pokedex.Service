@@ -42,7 +42,7 @@ namespace TrueLayer.Pokedex.Api.Middleware
                     statusCode = response.StatusCode
                 };
 
-                var errorJson =  JsonSerializer.Serialize(errorResponse);
+                var errorJson = JsonSerializer.Serialize(errorResponse);
 
                 await response.WriteAsync(errorJson);
                 throw;

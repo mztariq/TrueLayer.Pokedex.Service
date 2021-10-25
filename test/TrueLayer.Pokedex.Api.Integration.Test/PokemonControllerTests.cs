@@ -43,7 +43,7 @@ namespace TrueLayer.Pokedex.Api.Integration.Test
             var mockLogger = new Mock<ILogger<PokemonController>>();
             var sut = new PokemonController(mockPokemonService.Object, mockLogger.Object);
             mockPokemonService.Setup(x => x.GetPokemonDetail(name)).Throws<HttpRequestException>();
-           
+
 
             await sut.GetPokemon(name);
             var response = await ExecuteSendRequestAsync(name, $"{pokemonRelativeUrl}/{name}");

@@ -1,5 +1,4 @@
 ﻿using System.Threading.Tasks;
-using TrueLayer.Pokedex.Domain.Models;
 
 namespace TrueLayer.Pokedex.Infrastructure.HttpClients
 {

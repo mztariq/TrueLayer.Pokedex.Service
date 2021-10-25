@@ -14,6 +14,6 @@ namespace TrueLayer.Pokedex.Domain.Models
         public bool IsLegendary { get; set; }
 
         [JsonPropertyName("flavor_text_entries")]
-        public PokemonFlavorText[] FlavorTextEntries { get; set; } 
+        public PokemonFlavorText[] FlavorTextEntries { get; set; }
     }
 }

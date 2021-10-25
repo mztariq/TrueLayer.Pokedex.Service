@@ -21,7 +21,7 @@ namespace TrueLayer.Pokedex.Application.Unit.Test
         }
 
         [Theory]
-        [InlineData("pokemon")]        
+        [InlineData("pokemon")]
         [InlineData("pokemon2")]
         public async void PassingCorrectPokemonNameToGetPokemonDetailShouldReturnPokemonDetailObject(string name)
         {
@@ -35,7 +35,7 @@ namespace TrueLayer.Pokedex.Application.Unit.Test
 
 
         [Theory]
-        [InlineData("iamwrong")]        
+        [InlineData("iamwrong")]
         [InlineData("pleasehelp")]
         public async void PassingInvalidPokemonNameToGetPokemonDetailShouldThrowException(string name)
         {

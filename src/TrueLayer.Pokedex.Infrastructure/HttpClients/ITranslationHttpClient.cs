@@ -1,6 +1,5 @@
 ﻿using System.Threading.Tasks;
 using TrueLayer.Pokedex.Domain.Enums;
-using TrueLayer.Pokedex.Domain.Models;
 
 namespace TrueLayer.Pokedex.Infrastructure.HttpClients
 {

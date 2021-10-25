@@ -15,7 +15,7 @@ namespace TrueLayer.Pokedex.Application.Services
         private const string Language = "en";
 
 
-        public PokemonService(IPokemonHttpClient pokemonHttpClient, ILogger<PokemonService> logger, 
+        public PokemonService(IPokemonHttpClient pokemonHttpClient, ILogger<PokemonService> logger,
             ITranslationService translationService)
         {
             _pokemonHttpClient = pokemonHttpClient;

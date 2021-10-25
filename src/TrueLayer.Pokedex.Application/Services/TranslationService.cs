@@ -1,6 +1,4 @@
 ﻿using Microsoft.Extensions.Logging;
-using System;
-using System.Linq;
 using System.Threading.Tasks;
 using TrueLayer.Pokedex.Domain.Enums;
 using TrueLayer.Pokedex.Domain.Models;
@@ -24,11 +22,11 @@ namespace TrueLayer.Pokedex.Application.Services
 
         public async Task<string> Translate(PokemonDetail pokemon)
         {
-            var translatorType = (pokemon.Habitat == YodaHabitat || pokemon.IsLegendary) 
+            var translatorType = (pokemon.Habitat == YodaHabitat || pokemon.IsLegendary)
                 ? TranslatorType.Yoda : TranslatorType.Shakespeare;
 
             var result = await _translationHttpClient.GetTranslatedData<Translations>(pokemon.Description, translatorType);
-            return result.Contents?.Translated is not null ? result.Contents.Translated : pokemon.Description; 
+            return result?.Contents?.Translated is not null ? result.Contents.Translated : pokemon.Description;
         }
     }
 }

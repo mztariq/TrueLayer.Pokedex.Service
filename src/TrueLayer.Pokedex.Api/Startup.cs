@@ -10,16 +10,13 @@ using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using Otb.AspNetCore.Utilities.Middleware;
+using Serilog;
+using Swashbuckle.AspNetCore.SwaggerGen;
+using System;
 using TrueLayer.Pokedex.Api.Middleware;
 using TrueLayer.Pokedex.Application.Services;
 using TrueLayer.Pokedex.Domain.Models;
 using TrueLayer.Pokedex.Infrastructure.HttpClients;
-using Polly;
-using Polly.Extensions.Http;
-using Serilog;
-using Swashbuckle.AspNetCore.SwaggerGen;
-using System;
-using System.Net.Http;
 
 namespace TrueLayer.Pokedex.Api
 {

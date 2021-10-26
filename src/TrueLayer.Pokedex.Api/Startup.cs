@@ -9,7 +9,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
-using Otb.AspNetCore.Utilities.Middleware;
 using Serilog;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System;
@@ -53,9 +52,7 @@ namespace TrueLayer.Pokedex.Api
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseNewRelicIgnoreTransaction(healthCheckUrl, "/metrics");
-
-            //app.UseHttpsRedirection(); removing this as our kube pods dont support https routing. If you want to add it just un comment, else remove this line
+            app.UseHttpsRedirection(); 
 
             app.UseSerilogRequestLogging();
 
